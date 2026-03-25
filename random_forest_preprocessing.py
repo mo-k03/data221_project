@@ -10,7 +10,7 @@ def yearsSinceRenovation(yr_renovated):
     if yr_renovated != 0:
         return int(YEAR - yr_renovated)
     else:
-        return int(YEAR - features['yr_built'].mean())
+        return int(YEAR - features['yr_built'])
 
 def removeOutliers(df, column):
     Q1 = df[column].quantile(0.25)
