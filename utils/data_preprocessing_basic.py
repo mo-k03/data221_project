@@ -28,4 +28,4 @@ def clean_data(fileName):
     data = data[(data['price'] >= lower) & (data['price'] <= upper)]
 
 # creates new file to be used for models
-    data.to_csv('kc_house_data_cleaned.csv', index=False)
+    data.to_csv('../../data/kc_house_data_cleaned.csv', index=False)
