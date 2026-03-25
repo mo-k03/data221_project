@@ -1,16 +1,24 @@
-### How DOOM hold heat,
+# Predicting House Prices With Machine Learning Models
 
-but preach non-violence?
+Attempting to accurately predict the price of houses for individuals such as buyers, sellers, investors, and more utilizing the following models:
 
-- Sssh! He's about to start speech, come on, silence!
+- Linear Regression
+- Decision Tree
+- Random Forest
+- Gradient Boosting
+
+The performance of these models are displayed using MAE, MSE, and R^2 score.
+
+## Project Structure
 
 ```
-consectetur_adipiscing/
+/data221_project
+├── kc_house_data.csv              # Where the main dataset lives
 │
-├── elit/                  # Sed ut perspiciatis unde omnis
-│   └── sed do            # iste natus error sit voluptatem
+├── linear_regression_model.py     # Linear regression model portion of the project
 │
-├── eiusmod/
+├── random_forest_model.py         # Random forest model
+├── random_forest_preprocessing.py # Preprocessing for the random forest
 │
-└── tempor
+└── README.md
 ```
