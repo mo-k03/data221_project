@@ -1,15 +1,15 @@
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.metrics import accuracy_score, r2_score, mean_absolute_error
+from sklearn.metrics import r2_score, mean_absolute_error
 import pandas as pd
-from data_preprocessing_basic import clean_data
+from utils.data_preprocessing_basic import clean_data
 
 # preprocesses data
-clean_data('kc_house_data.csv')
+clean_data('../../data/kc_house_data.csv')
 
 # data loading
-data = pd.read_csv('kc_house_data_cleaned.csv')
+data = pd.read_csv('../../data/kc_house_data_cleaned.csv')
 feature_names = ['bedrooms','bathrooms','sqft_living','sqft_lot','floors','waterfront','view','condition','grade','sqft_above','sqft_basement','lat','long','sqft_living15','sqft_lot15','age_at_sale']
 feature_matrix = data.loc[:,feature_names]
 target_labels = data.loc[:,'price']
@@ -24,7 +24,12 @@ features_train = scaler.fit_transform(features_train)
 features_test = scaler.transform(features_test)
 
 # model creation
-decision_tree_regressor = DecisionTreeRegressor(criterion='squared_error', min_impurity_decrease = 0.01, min_samples_split= 15, max_depth=30, random_state=42)
+decision_tree_regressor = DecisionTreeRegressor(criterion='squared_error',
+                                                min_impurity_decrease = 0.05,
+                                                min_samples_split= 25,
+                                                max_depth=40,
+                                                min_samples_leaf=10,
+                                                random_state=42)
 decision_tree_regressor.fit(features_train, labels_train)
 
 # model training accuracy
