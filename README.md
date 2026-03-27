@@ -13,12 +13,23 @@ The performance of these models are displayed using MAE, MSE, and R^2 score.
 
 ```
 /data221_project
-├── kc_house_data.csv              # Where the main dataset lives
 │
-├── linear_regression_model.py     # Linear regression model portion of the project
+├── data/ 
+│   └── kc_house_data.csv          # Where the main dataset lives
+│   └── kc_house_data_cleaned.csv 
 │
-├── random_forest_model.py         # Random forest model
-├── random_forest_preprocessing.py # Preprocessing for the random forest
+├── models/ 
+│   └── decision_tree/
+│       └── decision_tree_model.py
+│   └── gradient_boosting/
+│       └── gradient_boosting_model.py
+│   └── linear_regression/
+│       └── linear_regression_model.py
+│   └── random_forest/
+│       └── random_forest_model.py
 │
+├── data/ 
+│   └── kc_house_data.csv          # Where the main dataset lives
+│   └── kc_house_data_cleaned.csv
 └── README.md
 ```
