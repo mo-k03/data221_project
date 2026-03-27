@@ -18,8 +18,8 @@ The performance of these models are displayed using MAE, MSE, and R^2 score.
 │   └── kc_house_data.csv          # Where the main dataset lives
 │   └── kc_house_data_cleaned.csv 
 │
-├── models/ 
-│   └── decision_tree/
+├── models/  
+│   └── decision_tree/     
 │       └── decision_tree_model.py
 │   └── gradient_boosting/
 │       └── gradient_boosting_model.py
@@ -28,8 +28,11 @@ The performance of these models are displayed using MAE, MSE, and R^2 score.
 │   └── random_forest/
 │       └── random_forest_model.py
 │
-├── data/ 
-│   └── kc_house_data.csv          # Where the main dataset lives
-│   └── kc_house_data_cleaned.csv
+├── utils/ 
+│   └── common.py                  # Common dataset preprocessing amongst all models, same for below
+│   └── data_preprocessing_basic 
+│
+├── main.ipynb                     # Statistical conclusions, analysis of models, lives here.
+│
 └── README.md
 ```
