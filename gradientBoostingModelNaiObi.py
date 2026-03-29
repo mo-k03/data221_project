@@ -9,6 +9,10 @@ df = pd.read_csv("kc_house_data.csv")
 
 df = df.drop(columns=["id","data"], errors='ignore')
 
+#fill numerical w mean
 for col in df.select_dtypes(include=['int64', 'float64']).columns:
     df[col] = df[col].fillna(df[col].mean())
 
+#fill categorical w mode
+for col in df.select_dtypes(include=['object']).columns:
+    df[col] = df[col].fillna(df[col].mode()[0])
