@@ -7,5 +7,5 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 df = pd.read_csv("kc_house_data.csv")
 
-
+df = df.drop(columns=["id","data"], errors='ignore')
 
