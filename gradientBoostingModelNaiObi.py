@@ -32,3 +32,6 @@ model = GradientBoostingRegressor(
     max_depth=3,
     random_state=221
 )
+
+#train model
+model.fit(x_train, y_train)
