@@ -16,3 +16,6 @@ for col in df.select_dtypes(include=['int64', 'float64']).columns:
 #fill categorical w mode
 for col in df.select_dtypes(include=['object']).columns:
     df[col] = df[col].fillna(df[col].mode()[0])
+
+x = df.drop("price", axis=1)
+y = df["price"]
