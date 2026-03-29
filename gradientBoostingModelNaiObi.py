@@ -35,3 +35,6 @@ model = GradientBoostingRegressor(
 
 #train model
 model.fit(x_train, y_train)
+
+#predictions
+y_pred = model.predict(x_test)
