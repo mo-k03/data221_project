@@ -20,6 +20,15 @@ for col in df.select_dtypes(include=['object']).columns:
 x = df.drop("price", axis=1)
 y = df["price"]
 
+#train test split
 x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size= 0.2, random_state= 221
+)
+
+#model (gradient boosting)
+model = GradientBoostingRegressor(
+    n_estimators=200,
+    learning_rate=0.05,
+    max_depth=3,
+    random_state=221
 )
