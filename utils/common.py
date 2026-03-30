@@ -35,6 +35,8 @@ def dataCleaning(FILE_NAME):
     dataframe['years_since_renovation'] = dataframe['yr_renovated'].apply(lambda value: yearsSinceRenovation(value, dataframe)) # Turn year renovated to the years since renovation,
     dataframe['has_basement'] = dataframe['sqft_basement'].apply(hasBasement)                            # which is far more useful for models than having "year renovated"
 
+    dataframe['age_at_sale'] = dataframe.apply(lambda row: 2015 - row['yr_renovated'] if row['yr_renovated'] > 0 else 2015 - row['yr_built'], axis=1)
+
     dataframe = dataframe.drop(['yr_built', 'yr_renovated', 'sqft_basement'], axis=1) #Turn the sqft of basements into has_basement, again, far more useful than its square feet.
 
     dataframe.to_csv('data/kc_house_data_cleaned.csv', index=False)
