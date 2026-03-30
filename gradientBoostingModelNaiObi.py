@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
@@ -45,3 +45,12 @@ mse = mean_squared_error(y_test,y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
+print("Gradient Boosting Results:")
+print("MAE:", mae)
+print("MSE:", mse)
+print("RMSE:", rmse)
+print("R2:", r2)
+
+#feature importance
+importances = model.feature_importances_
+features = x.columns
