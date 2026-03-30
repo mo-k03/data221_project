@@ -1,22 +1,14 @@
-from sklearn.model_selection import train_test_split
+import numpy as np
+from matplotlib import pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.metrics import r2_score, mean_absolute_error
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import pandas as pd
-from utils.data_preprocessing_basic import clean_data
+from utils.common import dataCleaning, trainTestSplit80_20
 
 # preprocesses data
-clean_data('../../data/kc_house_data.csv')
-
-# data loading
-data = pd.read_csv('../../data/kc_house_data_cleaned.csv')
-feature_names = ['bedrooms','bathrooms','sqft_living','sqft_lot','floors','waterfront','view','condition','grade','sqft_above','sqft_basement','lat','long','sqft_living15','sqft_lot15','age_at_sale']
-feature_matrix = data.loc[:,feature_names]
-target_labels = data.loc[:,'price']
-
-# training split, 80/20
-features_train, features_test, labels_train, labels_test = (
-    train_test_split(feature_matrix, target_labels, test_size=0.2, random_state=42)) # 80/20 split
+dataCleaning('../../data/kc_house_data.csv')
+features_train, features_test, labels_train, labels_test = trainTestSplit80_20('../../data/kc_house_data_cleaned.csv')
 
 # data standardization
 scaler = StandardScaler()
@@ -43,13 +35,26 @@ r2_test = r2_score(labels_test, predicted_test)
 # calculate Mean Absolute Error (The average $ amount you are off by)
 mae_test = mean_absolute_error(labels_test, predicted_test)
 
+# calculate Squared Mean Error
+mse = mean_squared_error(labels_test, predicted_test)
+
+
 print(f"Training R2 Score: {r2_train:.4f}")
 print(f"Testing R2 Score: {r2_test:.4f}")
-print(f"Average Error: ${mae_test:,.2f}")
+print(f"Mean Absolute Error: ${mae_test:,.2f}")
+print(f"Mean Squared Error: ${mse:.4f}")
 
+#feature importance
 importances = decision_tree_regressor.feature_importances_
-feature_names = ['bedrooms','bathrooms','sqft_living','sqft_lot','floors','waterfront','view','condition','grade','sqft_above','sqft_basement','lat','long','sqft_living15','sqft_lot15','age_at_sale'
-]
-feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importances})
-print(feature_importance_df.sort_values(by='Importance', ascending=False))
+df = pd.read_csv("../../data/kc_house_data_cleaned.csv")
+x = df.drop("price", axis=1)
+features = x.columns
 
+indices = np.argsort(importances)[::-1]
+
+plt.figure()
+plt.title("Feature Importances (Gradient Boosting)")
+plt.bar(range(len(importances)), importances[indices])
+plt.xticks(range(len(importances)), features[indices], rotation=90)
+plt.tight_layout()
+plt.show()
