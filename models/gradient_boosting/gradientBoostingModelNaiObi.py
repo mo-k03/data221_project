@@ -4,26 +4,13 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from utils.common import dataCleaning, trainTestSplit80_20
 
-df = pd.read_csv("../../data/kc_house_data.csv")
-
-df = df.drop(columns=["id","date"], errors='ignore')
-
-#fill numerical w mean
-for col in df.select_dtypes(include=['int64', 'float64']).columns:
-    df[col] = df[col].fillna(df[col].mean())
-
-#fill categorical w mode
-for col in df.select_dtypes(include=['object']).columns:
-    df[col] = df[col].fillna(df[col].mode()[0])
-
-x = df.drop("price", axis=1)
-y = df["price"]
+# data preprocessing
+dataCleaning("../../data/kc_house_data.csv")
 
 #train test split
-x_train, x_test, y_train, y_test = train_test_split(
-    x, y, test_size= 0.2, random_state= 221
-)
+x_train, x_test, y_train, y_test = trainTestSplit80_20('../../data/kc_house_data_cleaned.csv')
 
 #model (gradient boosting)
 model = GradientBoostingRegressor(
@@ -53,6 +40,8 @@ print("R2:", r2)
 
 #feature importance
 importances = model.feature_importances_
+df = pd.read_csv("../../data/kc_house_data_cleaned.csv")
+x = df.drop("price", axis=1)
 features = x.columns
 
 indices = np.argsort(importances)[::-1]
