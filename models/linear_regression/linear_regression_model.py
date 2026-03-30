@@ -6,21 +6,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import numpy as np
 import matplotlib.pyplot as plt
+from utils.common import dataCleaning, trainTestSplit80_20
 
-# load dataset
-kc_house = pd.read_csv("../../data/kc_house_data_cleaned.csv")
+# preprocesses data
+dataCleaning("../../data/kc_house_data.csv")
 
-# set features and target
-kch_features = kc_house.drop("price", axis=1)
-kch_target = kc_house["price"]
-
-# train test split (80/20)
-kch_features_train, kch_features_test, kch_target_train, kch_target_test = train_test_split(
-    kch_features,
-    kch_target,
-    test_size=0.2,
-    random_state=221
-)
+# data loading
+kch_features_train, kch_features_test, kch_target_train, kch_target_test = trainTestSplit80_20("../../data/kc_house_data_cleaned.csv")
 
 # train the model
 linear_regression_model = LinearRegression()
@@ -39,9 +31,9 @@ print("MAE:", mae_value)
 print("RMSE:", rmse_value)
 print("R^2:", r2_value)
 
-# feature importance, ranking what features affect the model the most
-
 # create feature-coefficient table
+df = pd.read_csv("../../data/kc_house_data_cleaned.csv")
+kch_features = df.drop("price", axis=1)
 feature_coefficients = pd.DataFrame({
     "Features": kch_features.columns,
     "Coefficient": linear_regression_model.coef_
