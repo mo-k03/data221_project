@@ -34,7 +34,6 @@ r2_test = r2_score(labels_test, predicted_test)
 
 # calculate Mean Absolute Error (The average $ amount you are off by)
 mae_test = mean_absolute_error(labels_test, predicted_test)
-
 # calculate Squared Mean Error
 mse = mean_squared_error(labels_test, predicted_test)
 
@@ -53,7 +52,7 @@ features = x.columns
 indices = np.argsort(importances)[::-1]
 
 plt.figure()
-plt.title("Feature Importances (Gradient Boosting)")
+plt.title("Feature Importances (Decision Tree)")
 plt.bar(range(len(importances)), importances[indices])
 plt.xticks(range(len(importances)), features[indices], rotation=90)
 plt.tight_layout()
