@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c6b1a26-9181-4394-a187-e853aa97b2e6" name="Changes" comment="FIRST COMMIT" />
+    <list default="true" id="1c6b1a26-9181-4394-a187-e853aa97b2e6" name="Changes" comment="FIRST COMMIT">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradientBoostingModelNaiObi.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/gradient_boosting/gradientBoostingModelNaiObi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gradient_boosting/gradient_boosting.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="decision_tree_ben_g" />
+        <entry key="$PROJECT_DIR$" value="linear_regression_mk" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,11 +46,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.gradientBoostingModelNaiObi.executor": "Run",
     "Python.linear_regression_model.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "projectstructuring"
+    "git-widget-placeholder": "main"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models/gradient_boosting" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
