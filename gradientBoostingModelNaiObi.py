@@ -7,7 +7,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 df = pd.read_csv("kc_house_data.csv")
 
-df = df.drop(columns=["id","data"], errors='ignore')
+df = df.drop(columns=["id","date"], errors='ignore')
 
 #fill numerical w mean
 for col in df.select_dtypes(include=['int64', 'float64']).columns:
@@ -57,3 +57,9 @@ features = x.columns
 
 indices = np.argsort(importances)[::-1]
 
+plt.figure()
+plt.title("Feature Importances (Gradient Boosting)")
+plt.bar(range(len(importances)), importances[indices])
+plt.xticks(range(len(importances)), features[indices], rotation=90)
+plt.tight_layout()
+plt.show()
