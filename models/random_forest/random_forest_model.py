@@ -1,6 +1,6 @@
 def randomForestModel():
-    import sys, os
-    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+    #import sys, os
+    #sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
     # Get directory of the current file, navigate up two levels in the folder (../..), converts the folders into something readable 
     # (i.e home/user/project), then finally, let python acknowledge it as a importable file.
 
@@ -11,11 +11,11 @@ def randomForestModel():
     import pandas as pd
     import matplotlib.pyplot as plt
 
-    from utils.common import dataCleaning
+    # generating files for cleaning data
+    # from utils.common import dataCleaning
+    # dataCleaning("../../data/kc_house_data.csv")
 
-    dataCleaning("data/kc_house_data.csv")
-
-    dataframe = pd.read_csv("data/kc_house_data_cleaned.csv")
+    dataframe = pd.read_csv("../../data/kc_house_data_cleaned.csv")
 
     features = dataframe.drop('price', axis=1)
     labels = dataframe['price']
