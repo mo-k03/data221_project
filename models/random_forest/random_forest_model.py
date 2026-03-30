@@ -9,6 +9,7 @@ def randomForestModel():
     from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
     import pandas as pd
+    import matplotlib.pyplot as plt
 
     from utils.common import dataCleaning
 
@@ -57,6 +58,24 @@ def randomForestModel():
     # there is slight overfitting within the model, which is seen in the difference between the R^2 of the training, and testing score.
     # this amount of overfitting is generally normal within random forest models due to its complexity and amount of parameters,
     # i have attempted to tune the parameters to minimize overfitting and reduce the MAE and MSE as much as possible.
+
+    importances = model.feature_importances_
+    featureNames = xTrain.columns
+
+    importanceDf = pd.DataFrame({
+        'feature': featureNames,
+        'importance': importances
+    }).sort_values('importance', ascending=False)
+
+    plt.figure(figsize=(10, 6))
+    plt.barh(importanceDf['feature'], importanceDf['importance'])
+    plt.gca().invert_yaxis() # Most important features are at the top.
+    plt.xlabel('Importance')
+    plt.title('Random Forest Feature Importances')
+    plt.tight_layout()
+    plt.show()
+
+    print(importanceDf)
 
 randomForestModel()
 
