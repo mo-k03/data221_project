@@ -37,11 +37,12 @@ mae_test = mean_absolute_error(labels_test, predicted_test)
 # calculate Squared Mean Error
 mse = mean_squared_error(labels_test, predicted_test)
 
-
+# model accuracy metrics
 print(f"Training R2 Score: {r2_train:.4f}")
 print(f"Testing R2 Score: {r2_test:.4f}")
 print(f"Mean Absolute Error: ${mae_test:,.2f}")
 print(f"Mean Squared Error: ${mse:.4f}")
+print(f"Sqrt of MSE: ${np.sqrt(mse):.4f}")
 
 #feature importance
 importances = decision_tree_regressor.feature_importances_
