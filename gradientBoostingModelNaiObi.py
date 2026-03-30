@@ -54,3 +54,6 @@ print("R2:", r2)
 #feature importance
 importances = model.feature_importances_
 features = x.columns
+
+indices = np.argsort(importances)[::-1]
+
