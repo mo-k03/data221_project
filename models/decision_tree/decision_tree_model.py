@@ -1,6 +1,5 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import pandas as pd
@@ -9,11 +8,6 @@ from utils.common import dataCleaning, trainTestSplit80_20
 # preprocesses data
 dataCleaning('../../data/kc_house_data.csv')
 features_train, features_test, labels_train, labels_test = trainTestSplit80_20('../../data/kc_house_data_cleaned.csv')
-
-# data standardization
-scaler = StandardScaler()
-features_train = scaler.fit_transform(features_train)
-features_test = scaler.transform(features_test)
 
 # model creation
 decision_tree_regressor = DecisionTreeRegressor(criterion='squared_error',
