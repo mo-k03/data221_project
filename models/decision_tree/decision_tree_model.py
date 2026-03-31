@@ -15,7 +15,7 @@ decision_tree_regressor = DecisionTreeRegressor(criterion='squared_error',
                                                 min_samples_split= 25,
                                                 max_depth=40,
                                                 min_samples_leaf=10,
-                                                random_state=42)
+                                                random_state=221)
 decision_tree_regressor.fit(features_train, labels_train)
 
 # model training accuracy
